@@ -1,0 +1,15 @@
+{
+
+	"compilerOptions": {
+		"target":"es5", //our es6 code will be compiled down to es5 so browsers can understand/support features
+		"module":"commonjs", //module for code generation - where our compiled files (js)  will be generated
+		"moduleResolution":"node", //determines how modules are resolved - node tyle (?)
+		"sourceMap":true, //Generates corresponding ‘.map’ file.
+		"emitDecoratorMetadata":true, //(?)
+		"experimentalDecorators":true, //Enables experimental support for ES7 decorators. (?)
+		"removeComments":false, //Remove all comments except copy-right header comments beginning with - it defaults to false, so this is redundant
+		"noImplicitAny":false // When this is set to false (the default) it says that if the compiler cannot infer the variable type based on how it's used, the compiler silently defaults the type to 'any' and do not throw an error. If this is set to true, the compiler will generate the javascript files but it will also report a type-checking error.
+	}
+
+	//As no option like "files": [] or "include":[] or "exclude":[] were added to this configuration, the compiler will look to ALL Typescript files in the containing directory and subdirectories.
+}

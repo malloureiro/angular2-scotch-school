@@ -1,0 +1,38 @@
+
+First steps:
+
+1- Created ng2-start folder
+2- Created index.html file containing only the basic structure and link do bootstrap style
+	* Check the difference of downloading the script or adding it straight from cdn 
+3- Ran npm init --yes (yes to create default structure of package.json file and NOT prompt for any options)
+4- Installed lite-server from npm and created a script to run lite-server (npm run lite), this will open the browser and will watch the application
+5- Installed typescript and typings to dev-dependencies (npm install --save-dev typescript typings)
+	* npm install --save -> saves package to "dependencies"
+	* npm install --save-dev -> saves package to "devDependencies"
+6- Created file tsconfig.json to hold configuration properties of Typescript compiler - defines how the compiler will generate the js files
+7- npm instal -g typings (install typing globally, same as --global) *I didn't exactly understand this step as I had previously ran npm install typescript typings*
+	After installing run : typings install dt~core-js dt~jasmine dt~node --save --global
+	* This way typings tool is providing information to Typescript compiler about these packages.
+	Understanding Typescript and Typings:
+	- Each JavaScript library should contain a file d.ts that tells Typescript about the libraries contained in the package, but there are some cases where the libraries does not provide the d.ts file, so in this scenario we should use the Typings tool that can search for these d.ts files in some repository, fetch and install these files under "typings" folder.
+	- In this way, it is recommended that the developer creates a script that will run a 'typings install' command automatically every time npm install some package:
+		"postinstall": "typings install"
+	(?) My question to these step is: why 'typings install' typescript information about jasmine,node and core-js if we are not directly installing them? Maybe it's because they are dependencies of other dependencies? This was just an example of how to do it during the configuration?
+	ANSWER: QuickStart tutorial doesn't require these typings but many of the samples do, that's way we have downloaded its d.ts files.
+8- The last step in this setup is to install a package called concurrently (npm install concurrently --save-dev)
+	* Concurrently tool allows the user to run multiple npm commands at onde. In this case it will run concurrently both Typescript watch and lite-server, which means that we are now able to run 2 packages together at the same time.
+	* In order to have this we created the "start" script that adds to a single command the tsc compiler + concurrently with tsc what + concurrently with lite-server ("tsc && concurrently \"npm run tsc:w\" \"npm run lite\"")
+	* What 'tsc' command does is invoke typescript compiler that will search in the current directory for tsconfig.json (where rules to compile are defined), in summary, will compile.
+9- Installing angular dependencies: npm install core-js reflect-metadata zone.js rxjs@5.0.0-b
+eta.6 systemjs --save 
+	* Question here is: how do I know what are the dependencies?
+10- Installing Angular core packages to web application: @angular/core,compiler,common,platform-browser and platform-browser-dynamic.
+11- Installing optional Angular packages (modules, the same as we would declare it as a new script file in index.html): @angular/http,router,forms and upgrade.
+	*After steps 9,10 and 11 we have all the packages we need to start building an Angular 2 application.
+12- After configuring Typescript, installing dependencies and installing Angular packages, we need to tell Angular where to find these packages that it's going to be used in order to build the application. This process is going to be done using SystemJs tool (loader tool).
+	For this step follows the explanation from Scotch School (obs: at this moment we have only copied the entire systemjs.config.js file that defines a main.js start point)
+	Note: The code for this video won't be complete yet. System.js is trying to load the main.js file, but we haven't created that yet. We'll do that in the next video and give System.js something to load.
+	Whenever you see an ES6 import, know that this represents a module being loaded. For instance, the following is an ES6 import:
+		import { Component } from '@angular/core';
+	Browsers don't support loading packages like this so we'll need a loader. For this course, we'll use System.js. We could have also chosen the great Webpack, but System.js is a little easier on initial setup. Also, the Angular quickstart uses System.js while the Angular CLI uses Webpack. So both options are valid.
+

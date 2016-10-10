@@ -1,5 +1,5 @@
 
-First steps:
+==== First steps:
 
 1- Created ng2-start folder
 2- Created index.html file containing only the basic structure and link do bootstrap style
@@ -36,3 +36,7 @@ eta.6 systemjs --save
 		import { Component } from '@angular/core';
 	Browsers don't support loading packages like this so we'll need a loader. For this course, we'll use System.js. We could have also chosen the great Webpack, but System.js is a little easier on initial setup. Also, the Angular quickstart uses System.js while the Angular CLI uses Webpack. So both options are valid.
 
+==== Getting Started Applications: TO DO
+- Check Style Guide from angular.io to follow the folder/files structure proposed.
+- Check how to inject html into template url using relative paths. (This is not possible on the fly because the js files are located into target folder, so they cannot directly refer to a relative location).
+- Check how to reference paths from import module declaration

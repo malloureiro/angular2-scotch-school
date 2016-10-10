@@ -14,7 +14,7 @@ import {User} from '../models/user';
 
 export class AppComponent {
 	// Cannot use 'const' or 'var' to create a variable inside of a class
-	message = "Welcome to my App!";
+	message: string = "Welcome to my App!";
 
 	users: User[] = [
 		{ id: 1, name: "Mary", username: "malloureiro", personalMessage: "Hello you!"},
@@ -29,4 +29,7 @@ export class AppComponent {
 		console.log(this.activeUser);
 	}
 
+	onUserCreated(event) {
+		this.users.push(event.newUser);
+	}
 }

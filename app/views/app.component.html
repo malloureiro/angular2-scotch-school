@@ -17,7 +17,7 @@
 				</ul>
 			</div>
 
-			<user-form [usersArr]="users"></user-form>
+			<user-form (userCreated)="onUserCreated($event)"></user-form>
 		</div>
 		<div class="col-sm-8">
 			<!-- Panel rendered according to user selection -->

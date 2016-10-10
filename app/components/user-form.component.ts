@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import {User} from '../models/user';
 
 @Component({
@@ -32,15 +32,20 @@ import {User} from '../models/user';
 	`
 })
 export class UserFormComponent {
-	@Input() usersArr: User[]; 
+	/* Input - Gets information from a parent component. This was done in order to receive the users array from app.component and then add the new user to it.
+	 I am now substituting this to use Output(), so I can SEND the information to the app.component and my form will be free to handle only what is its concerns, i.e. validate user's interactions
+	*/
+	//@Input() usersArr: User[];  
+
+	@Output() userCreated = new EventEmitter();
 
 	newUser: User = new User();
 
 	activeForm: boolean = true;
 
 	createUser() {
-		this.usersArr.push(this.newUser);
-
+		// Notify to the event receiver that a new user has been created and send the new user to the component responsible of saving it (to array).
+		this.userCreated.emit({ newUser: this.newUser });
 		// Resetting the object after submit
 		this.newUser = new User();
 		// This is a workaround to re-render form without any validation message after newuser object has been reset

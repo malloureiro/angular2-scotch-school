@@ -10,7 +10,7 @@
     },
     // map tells the System loader where to look for things
     map: {
-      // our app is within the taget folder - where we decided our transpiled javascript files should be
+      // our app is within the target folder - where we decided our transpiled javascript files should be
       app: 'target',
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',

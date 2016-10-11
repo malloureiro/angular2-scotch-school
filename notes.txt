@@ -23,8 +23,7 @@
 	* Concurrently tool allows the user to run multiple npm commands at onde. In this case it will run concurrently both Typescript watch and lite-server, which means that we are now able to run 2 packages together at the same time.
 	* In order to have this we created the "start" script that adds to a single command the tsc compiler + concurrently with tsc what + concurrently with lite-server ("tsc && concurrently \"npm run tsc:w\" \"npm run lite\"")
 	* What 'tsc' command does is invoke typescript compiler that will search in the current directory for tsconfig.json (where rules to compile are defined), in summary, will compile.
-9- Installing angular dependencies: npm install core-js reflect-metadata zone.js rxjs@5.0.0-b
-eta.6 systemjs --save 
+9- Installing angular dependencies: npm install core-js reflect-metadata zone.js rxjs@5.0.0-beta.6 systemjs --save 
 	* Question here is: how do I know what are the dependencies?
 10- Installing Angular core packages to web application: @angular/core,compiler,common,platform-browser and platform-browser-dynamic.
 11- Installing optional Angular packages (modules, the same as we would declare it as a new script file in index.html): @angular/http,router,forms and upgrade.
